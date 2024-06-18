@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<?define version = "1.0.1.1" ?>
-	<?ifdef env.rev?>
-	<?undef version ?>
-	<?define version = "$(env.rev)" ?>
-	<?endif?>
 	<Product Id="*" Name="Example Addin for Autodesk® Revit®" Language="1033" Version="1.0.0" Manufacturer="MyCompany" UpgradeCode="{BCD6DEB2-A581-4D50-950B-4FDE39CBEFB0}">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
