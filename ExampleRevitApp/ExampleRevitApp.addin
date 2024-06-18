@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Example Partner App</Name>
+    <Assembly>C:\Users\richa\Documents\Repos\pypeserverconnect_revit\ExamplePartnerApp\ExamplePartnerApp\bin\Debug\ExamplePartnerApp.dll</Assembly>
+    <ClientId>138575BB-B6C8-4ABE-8FFD-E3F499E6B26D</ClientId>
+    <FullClassName>ExamplePartnerApp.ExampleRevitAddOn</FullClassName>
+    <VendorId>PypeServer</VendorId>
+    <VendorDescription>PypeServer Software, www.pypeserver.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

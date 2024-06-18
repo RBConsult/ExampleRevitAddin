@@ -1,0 +1,10 @@
+
+ExampleAddinForRevitInstaller/bin/
+ExampleAddinForRevitInstaller/obj/
+ExampleAddinForRevitInstaller/.vs/
+ExampleRevitApp/bin/
+ExampleRevitApp/obj/
+packages/
+.vs/
+ExampleRevitApp_Net8/bin/
+ExampleRevitApp_Net8/obj/

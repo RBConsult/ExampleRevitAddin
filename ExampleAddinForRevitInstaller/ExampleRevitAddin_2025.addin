@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Example Revit Addin</Name>
+    <Assembly>C:\Program Files\Example Revit Addin\Revit 2025\ExampleRevitAddin.dll</Assembly>
+    <ClientId>5FD97479-9F2D-453B-8A2F-645327ABD17A</ClientId>
+    <FullClassName>ExampleRevitAddin.ExampleRevitAddin</FullClassName>
+    <VendorId>Ricky Bell</VendorId>
+    <VendorDescription>Software Engineer</VendorDescription>
+  </AddIn>
+</RevitAddIns>

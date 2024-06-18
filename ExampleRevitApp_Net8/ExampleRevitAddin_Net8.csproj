@@ -1,0 +1,129 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0-windows</TargetFramework>
+		<RootNamespace>ExampleRevitAddin</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Configurations>Debug;Release;RVT_25</Configurations>
+		<AssemblyName>ExampleRevitAddin</AssemblyName>
+		<UseWPF>true</UseWPF>
+		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<IsPublishable>False</IsPublishable>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<IsPublishable>False</IsPublishable>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RVT_25|AnyCPU'">
+		<IsPublishable>False</IsPublishable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Resources\Hamburger_Dark.png" />
+		<None Remove="Resources\Hamburger_Light.png" />
+		<None Remove="Resources\Logo_Dark.png" />
+		<None Remove="Resources\Logo_Icon_32.png" />
+		<None Remove="Resources\Logo_Light.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="..\ExampleRevitApp\Controllers\MyController.cs" Link="Controllers\MyController.cs" />
+		<Compile Include="..\ExampleRevitApp\ExampleRevitAddin.cs" Link="ExampleRevitAddin.cs" />
+		<Compile Include="..\ExampleRevitApp\ImageUtil.cs" Link="ImageUtil.cs" />
+		<Compile Include="..\ExampleRevitApp\RequestHandler.cs" Link="RequestHandler.cs" />
+		<Compile Include="..\ExampleRevitApp\Views\DockableWindow.xaml.cs" Link="Views\DockableWindow.xaml.cs" />
+		<Compile Include="..\ExampleRevitApp\Views\ProgressBar.xaml.cs" Link="Views\ProgressBar.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Controllers\" />
+		<Folder Include="Models\" />
+		<Folder Include="Views\" />
+		<Folder Include="Theme\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources\Hamburger_Dark.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Hamburger_Light.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Resources\Logo_Dark.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<EmbeddedResource Include="Resources\Logo_Icon_32.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</EmbeddedResource>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
+		<PackageReference Include="System.Drawing.Common" Version="9.0.0-preview.4.24267.1" />
+		<Page Include="..\ExampleRevitApp\Theme\Styles.xaml">
+			<Generator>MSBuild:Compile</Generator>
+			<Link>Theme\Styles.xaml</Link>
+		</Page>
+		<Page Include="..\ExampleRevitApp\Views\DockableWindow.xaml">
+			<Generator>MSBuild:Compile</Generator>
+			<Link>Views\DockableWindow.xaml</Link>
+		</Page>
+		<Page Include="..\ExampleRevitApp\Views\ProgressBar.xaml">
+			<Generator>MSBuild:Compile</Generator>
+			<Link>Views\ProgressBar.xaml</Link>
+		</Page>
+		<Reference Include="RevitAPI">
+			<HintPath>..\dll_references\Revit\2025\RevitAPI.dll</HintPath>
+		</Reference>
+		<Reference Include="RevitAPIIFC">
+			<HintPath>..\dll_references\Revit\2025\RevitAPIIFC.dll</HintPath>
+		</Reference>
+		<Reference Include="RevitAPIUI">
+			<HintPath>..\dll_references\Revit\2025\RevitAPIUI.dll</HintPath>
+		</Reference>
+		<Reference Include="RevitDBAPI">
+			<HintPath>..\dll_references\Revit\2025\RevitDBAPI.dll</HintPath>
+		</Reference>
+		<Reference Include="RevitMFCAPI">
+			<HintPath>..\dll_references\Revit\2025\RevitMFCAPI.dll</HintPath>
+		</Reference>
+		<Reference Include="RevitUIAPI">
+			<HintPath>..\dll_references\Revit\2025\RevitUIAPI.dll</HintPath>
+		</Reference>
+		<Resource Include="Resources\Logo_Light.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Properties\Settings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Settings.settings</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Properties\Settings.settings">
+	    <Generator>SettingsSingleFileGenerator</Generator>
+	    <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+	  </None>
+	</ItemGroup>
+
+</Project>

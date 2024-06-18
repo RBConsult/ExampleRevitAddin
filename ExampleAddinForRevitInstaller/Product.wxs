@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<?define version = "1.0.1.1" ?>
+	<?ifdef env.rev?>
+	<?undef version ?>
+	<?define version = "$(env.rev)" ?>
+	<?endif?>
+	<Product Id="*" Name="Example Addin for Autodesk® Revit®" Language="1033" Version="1.0.0" Manufacturer="MyCompany" UpgradeCode="{BCD6DEB2-A581-4D50-950B-4FDE39CBEFB0}">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<WixVariable Id="WixUILicenseRtf" Value="EULA.rtf" />
+		<WixVariable Id="WixUIDialogBmp" Value="banner.bmp" />
+		<WixVariable Id="WixUIBannerBmp" Value="dialog.bmp" />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes"/>
+
+		<Icon Id="icon.ico" SourceFile="icon.ico"/>
+		<Property Id="ARPPRODUCTICON" Value="icon.ico" />
+
+		<Property Id="ADDINDIRECTORY21" Value="C:\ProgramData\Autodesk\Revit\Addins\2021\" />
+		<Property Id="ADDINDIRECTORY22" Value="C:\ProgramData\Autodesk\Revit\Addins\2022\" />
+		<Property Id="ADDINDIRECTORY23" Value="C:\ProgramData\Autodesk\Revit\Addins\2023\" />
+		<Property Id="ADDINDIRECTORY24" Value="C:\ProgramData\Autodesk\Revit\Addins\2024\" />
+		<Property Id="ADDINDIRECTORY25" Value="C:\ProgramData\Autodesk\Revit\Addins\2025\" />
+		<PropertyRef Id="WIX_DIR_COMMON_DOCUMENTS" />
+
+		<Feature Id="ProductFeature" Title="Example Revit Addin" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentRef Id="ProductComponents21" />
+			<ComponentRef Id="ProductComponents22" />
+			<ComponentRef Id="ProductComponents23" />
+			<ComponentRef Id="ProductComponents24" />
+			<ComponentRef Id="ProductComponents25" />
+		</Feature>
+		<UIRef Id="WixUI_Minimal" />
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFiles64Folder" Name="ProgramFiles">
+				<Directory Id="INSTALLFOLDER" Name="Example Revit Addin">
+					<Directory Id="VERSIONFOLDER21" Name="Revit 2021" />
+					<Directory Id="VERSIONFOLDER22" Name="Revit 2022" />
+					<Directory Id="VERSIONFOLDER23" Name="Revit 2023" />
+					<Directory Id="VERSIONFOLDER24" Name="Revit 2024" />
+					<Directory Id="VERSIONFOLDER25" Name="Revit 2025" />
+				</Directory>
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component Id="AddInComponent21" Guid="{363A1B98-A76D-4750-9530-55EC82987D5A}">
+				<File Id="AddinFile21" Source="ExampleRevitAddin_2021.addin" KeyPath="yes" >
+					<CopyFile Id="AddinFile21" DestinationProperty="ADDINDIRECTORY21"/>
+				</File>
+			</Component>
+			<Component Id="AddInComponent22" Guid="{CCF79C55-35A5-4479-A4D0-2A9A3A2FB344}">
+				<File Id="AddinFile22" Source="ExampleRevitAddin_2022.addin" KeyPath="yes" >
+					<CopyFile Id="AddinFile22" DestinationProperty="ADDINDIRECTORY22"/>
+				</File>
+			</Component>
+			<Component Id="AddInComponent23" Guid="{DAE0822A-1441-44C2-ABD3-26EB8338AFCE}">
+				<File Id="AddinFile23" Source="ExampleRevitAddin_2023.addin" KeyPath="yes" >
+					<CopyFile Id="AddinFile23" DestinationProperty="ADDINDIRECTORY23"/>
+				</File>
+			</Component>
+			<Component Id="AddInComponent24" Guid="{3BD67608-6CA6-4039-BE1F-A2AAF15833CD}">
+				<File Id="AddinFile24" Source="ExampleRevitAddin_2024.addin" KeyPath="yes" >
+					<CopyFile Id="AddinFile24" DestinationProperty="ADDINDIRECTORY24"/>
+				</File>
+			</Component>
+			<Component Id="AddInComponent25" Guid="{E58FD508-164D-4C1B-8C7B-737C8D84272E}">
+				<File Id="AddinFile25" Source="ExampleRevitAddin_2025.addin" KeyPath="yes" >
+					<CopyFile Id="AddinFile25" DestinationProperty="ADDINDIRECTORY25"/>
+				</File>
+			</Component>
+		</ComponentGroup>
+
+		<DirectoryRef Id="VERSIONFOLDER21">
+			<Component Id="ProductComponents21" Guid="{BC185F90-F0E0-45AE-B67A-D2A00EDA74B8}">
+				<File Id="PSRibbon21" Source="..\ExampleRevitApp\bin\RVT_21\ExampleRevitAddin.dll" />
+				<File Id="CommunityToolkit.Mvvm21" Source="..\ExampleRevitApp\bin\RVT_21\CommunityToolkit.Mvvm.dll" />
+				<File Id="MicrosoftXamlBehaviors21" Source="..\ExampleRevitApp\bin\RVT_21\Microsoft.Xaml.Behaviors.dll" />
+			</Component>
+		</DirectoryRef>
+		<DirectoryRef Id="VERSIONFOLDER22">
+			<Component Id="ProductComponents22" Guid="{6B706945-0B62-497D-BCC8-86A0851E70EB}">
+				<File Id="PSRibbon22" Source="..\ExampleRevitApp\bin\RVT_22\ExampleRevitAddin.dll" />
+				<File Id="CommunityToolkit.Mvvm22" Source="..\ExampleRevitApp\bin\RVT_22\CommunityToolkit.Mvvm.dll" />
+				<File Id="MicrosoftXamlBehaviors22" Source="..\ExampleRevitApp\bin\RVT_22\Microsoft.Xaml.Behaviors.dll" />
+			</Component>
+		</DirectoryRef>
+		<DirectoryRef Id="VERSIONFOLDER23">
+			<Component Id="ProductComponents23" Guid="{89F4C308-70E7-465F-B16C-C0060C933C85}">
+				<File Id="PSRibbon23" Source="..\ExampleRevitApp\bin\RVT_23\ExampleRevitAddin.dll" />
+				<File Id="CommunityToolkit.Mvvm23" Source="..\ExampleRevitApp\bin\RVT_23\CommunityToolkit.Mvvm.dll" />
+				<File Id="MicrosoftXamlBehaviors23" Source="..\ExampleRevitApp\bin\RVT_23\Microsoft.Xaml.Behaviors.dll" />
+			</Component>
+		</DirectoryRef>
+		<DirectoryRef Id="VERSIONFOLDER24">
+			<Component Id="ProductComponents24" Guid="{FD11DD3B-BAAF-4C63-97AF-EB7AB54CC15D}">
+				<File Id="PSRibbon24" Source="..\ExampleRevitApp\bin\RVT_24\ExampleRevitAddin.dll" />
+				<File Id="CommunityToolkit.Mvvm24" Source="..\ExampleRevitApp\bin\RVT_24\CommunityToolkit.Mvvm.dll" />
+				<File Id="MicrosoftXamlBehaviors24" Source="..\ExampleRevitApp\bin\RVT_24\Microsoft.Xaml.Behaviors.dll" />
+			</Component>
+		</DirectoryRef>
+		<DirectoryRef Id="VERSIONFOLDER25">
+			<Component Id="ProductComponents25" Guid="{0BF73581-091C-43F8-839B-A3E26C4F3713}">
+				<File Id="PSRibbon25" Source="..\ExampleRevitApp_Net8\bin\RVT_25\net8.0-windows\ExampleRevitAddin.dll" />
+				<File Id="CommunityToolkit.Mvvm25" Source="..\ExampleRevitApp_Net8\bin\RVT_25\net8.0-windows\CommunityToolkit.Mvvm.dll" />
+				<File Id="MicrosoftXamlBehaviors25" Source="..\ExampleRevitApp_Net8\bin\RVT_25\net8.0-windows\Microsoft.Xaml.Behaviors.dll" />
+			</Component>
+		</DirectoryRef>
+	</Fragment>
+</Wix>
